@@ -27,11 +27,15 @@ exports.handler = function (event, context) {
       // ③接続確認エラーを確認する。
 
     } else {
-      let text = body.events[0].message.text;
+      let text = "平素よりお世話になっております。文字数貯金です。/n 只今、" + body.events[0].message.text + "円の入金を確認しました。";
       const message = {
         type: "text",
         text,
       };
+
+      //入力文字チェック関数呼び出し
+      //falseの場合、「入力文字は半角英数のみです」をメッセージ送信
+
       client
         .replyMessage(body.events[0].replyToken, message)
         .then((response) => {
@@ -50,3 +54,14 @@ exports.handler = function (event, context) {
     console.log("署名認証エラー");
   }
 };
+
+//返信メッセージを作成する関数
+//messageに数字以外が含まれる場合、エラーが出る
+
+
+//預金時の入力文字チェック（半角文字のみ）
+
+
+//DBに登録する関数　
+//登録に失敗した場合、エラーが出る
+
