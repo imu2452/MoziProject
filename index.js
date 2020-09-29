@@ -27,7 +27,11 @@ exports.handler = function (event, context) {
       // ③接続確認エラーを確認する。
 
     } else {
-      let text = "平素よりお世話になっております。文字数貯金です。/n 只今、" + body.events[0].message.text + "円の入金を確認しました。";
+      let text = `平素よりお世話になっております。文字数貯金です。
+        只今、
+        【` + body.events[0].message.text + `円】
+        の入金を確認しました。
+        またのご利用、お待ちしております。`;
       const message = {
         type: "text",
         text,
